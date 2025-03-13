@@ -10,7 +10,7 @@ using System.Text.Json;
 
 namespace Microsoft.Extensions.Hosting;
 
-public static class Aspire
+public static class Telemetry
 {
     public static TBuilder AddServiceDefaults<TBuilder>(this TBuilder builder) where TBuilder : IHostApplicationBuilder
     {

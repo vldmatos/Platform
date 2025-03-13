@@ -1,23 +1,25 @@
 using Configurations.Extensions;
-using Scalar.AspNetCore;
+using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.AddServiceDefaults()
        .AddAzureCosmosClient();
 
-builder.Services.AddRateLimits();
-
-
+builder.Services.AddRateLimits()
+                .AddOpenApi()
+                .AddEndpoints(Assembly.GetExecutingAssembly());
 
 var application = builder.Build();
 
 application.MapDefaultEndpoints()
            .MapOpenApi();
 
-application.MapScalarApiReference();
+application.MapEndpoints();
 
 application.UseHttpsRedirection()
            .UseRateLimiter();
 
 application.Run();
+
+

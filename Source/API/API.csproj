@@ -7,16 +7,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="9.0.3" />
-    <PackageReference Include="Scalar.AspNetCore" Version="2.0.29" />
+    <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="9.0.3" />    
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Configurations\Configurations.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Endpoints\" />
   </ItemGroup>
 
 </Project>

@@ -7,8 +7,7 @@
 			"commandName": "Project",
 			"dotnetRunMessages": true,
 			"launchBrowser": false,
-			"applicationUrl": "https://localhost:7051",
-			"launchUrl": "scalar",
+			"applicationUrl": "https://localhost:7051",			
 			"environmentVariables":
 			{
 				"ASPNETCORE_ENVIRONMENT": "Development"
