@@ -6,22 +6,18 @@ var builder = WebApplication.CreateBuilder(args);
 builder.AddServiceDefaults()
        .AddAzureCosmosClient();
 
+builder.Services.AddRateLimits();
+
+
+
 var application = builder.Build();
 
-application.MapDefaultEndpoints();
+application.MapDefaultEndpoints()
+           .MapOpenApi();
 
-if (application.Environment.IsDevelopment())
-{
-    application.MapOpenApi();
-    application.MapScalarApiReference();
-}
+application.MapScalarApiReference();
 
-application.UseHttpsRedirection();
-
-application.MapGet("/hi", () =>
-{
-    return "hi";
-})
-.WithName("GetWeatherForecast");
+application.UseHttpsRedirection()
+           .UseRateLimiter();
 
 application.Run();

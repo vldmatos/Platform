@@ -14,8 +14,9 @@ var cosmos = builder.AddAzureCosmosDB("cosmos").RunAsPreviewEmulator(emulator =>
     emulator.WithLifetime(ContainerLifetime.Persistent)
             .WithDataVolume()
             .WithDataExplorer();
-})
-.AddCosmosDatabase("grains");
+});
+
+var database = cosmos.AddCosmosDatabase("grains");
 
 var storage = builder.AddAzureStorage("storage").RunAsEmulator();
 
@@ -28,10 +29,10 @@ var orleans = builder.AddOrleans("cluster")
 
 builder.AddProject<Projects.Collector>("collector")
        .WithReference(orleans)
-       .WithReplicas(10);
+       .WithReplicas(1);
 
 builder.AddProject<Projects.API>("api")
        .WithReference(cosmos)
-       .WaitFor(cosmos);
+       .WaitFor(database);
 
 builder.Build().Run();
