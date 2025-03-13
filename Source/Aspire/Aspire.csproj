@@ -1,0 +1,28 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <Sdk Name="Aspire.AppHost.Sdk" Version="9.0.0" />
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net9.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <IsAspireHost>true</IsAspireHost>
+    <UserSecretsId>477886bd-933b-406f-b393-e6bf0d47af93</UserSecretsId>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Aspire.Hosting.AppHost" Version="9.1.0" />
+    <PackageReference Include="Aspire.Hosting.Azure.CosmosDB" Version="9.1.0" />
+    <PackageReference Include="Aspire.Hosting.Azure.Storage" Version="9.1.0" />
+    <PackageReference Include="Aspire.Hosting.Orleans" Version="9.1.0" />
+    <PackageReference Include="CommunityToolkit.Aspire.Hosting.Ollama" Version="9.2.1" />    
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\API\API.csproj" />
+    <ProjectReference Include="..\Collector\Collector.csproj" />
+    <ProjectReference IsAspireProjectResource="false" Include="..\Configurations\Configurations.csproj" />
+  </ItemGroup>
+
+</Project>
