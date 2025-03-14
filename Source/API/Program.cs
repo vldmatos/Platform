@@ -7,6 +7,7 @@ builder.AddServiceDefaults()
        .AddAzureCosmosClient();
 
 builder.Services.AddRateLimits()
+                .AddProblemDetail()
                 .AddOpenApi()
                 .AddEndpoints(Assembly.GetExecutingAssembly());
 
@@ -18,7 +19,8 @@ application.MapDefaultEndpoints()
 application.MapEndpoints();
 
 application.UseHttpsRedirection()
-           .UseRateLimiter();
+           .UseRateLimiter()
+           .UseExceptionHandler();
 
 application.Run();
 
